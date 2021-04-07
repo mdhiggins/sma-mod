@@ -1,5 +1,5 @@
 ## Buildstage ##
-FROM ghcr.io/linuxserver/baseimage-alpine as buildstage
+FROM ghcr.io/linuxserver/baseimage-alpine:3.12 as buildstage
 LABEL maintainer="mdhiggins <mdhiggins23@gmail.com>"
 
 ENV SMA_PATH $ARG_SMA_PATH
