@@ -25,6 +25,7 @@ RUN \
   /root-layer/${SMA_PATH}/venv/bin/pip install -r /root-layer/${SMA_PATH}/setup/requirements.txt && \
 # ffmpeg
   wget ${SMA_FFMPEG_URL} -O /tmp/ffmpeg.tar.xz && \
+  mkdir -p /root-layer/usr/local/bin && \
   tar -xJf /tmp/ffmpeg.tar.xz -C /root-layer/usr/local/bin --strip-components 1 && \
   chgrp users /root-layer/usr/local/bin/ffmpeg && \
   chgrp users /root-layer/usr/local/bin/ffprobe && \
