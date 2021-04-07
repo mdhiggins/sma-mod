@@ -1,5 +1,5 @@
 ## Buildstage ##
-FROM ghcr.io/linuxserver/baseimage-ubuntu:latest as buildstage
+FROM ghcr.io/linuxserver/baseimage-ubuntu:focal as buildstage
 LABEL maintainer="mdhiggins <mdhiggins23@gmail.com>"
 
 ENV SMA_PATH $ARG_SMA_PATH
