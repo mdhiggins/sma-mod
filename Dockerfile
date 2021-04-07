@@ -9,7 +9,6 @@ ENV SMA_FFMPEG_URL https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd6
 
 # get python3 and git, and install python libraries
 RUN \
-  mkdir -p /root-layer && \
   apt-get update && \
   apt-get install -y \
     git \
