@@ -2,8 +2,7 @@
 FROM ghcr.io/linuxserver/baseimage-ubuntu:focal as buildstage
 LABEL maintainer="mdhiggins <mdhiggins23@gmail.com>"
 
-ENV SMA_PATH $ARG_SMA_PATH
-ENV SMA_RS Sonarr
+ENV SMA_PATH /usr/local/sma
 ENV SMA_UPDATE false
 ENV SMA_FFMPEG_URL https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
 
@@ -46,7 +45,6 @@ COPY root/ /root-layer/
 FROM scratch
 
 ENV SMA_PATH /usr/local/sma
-ENV SMA_RS Sonarr
 ENV SMA_UPDATE false
 
 VOLUME /usr/local/sma/config
