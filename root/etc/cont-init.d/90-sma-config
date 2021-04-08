@@ -1,5 +1,7 @@
 #!/usr/bin/with-contenv bash
 
+export DEBIAN_FRONTEND="noninteractive"
+
 # env check
 if [[ -z "${SMA_PATH}" ]]; then
   export SMA_PATH="/usr/local/sma"
@@ -9,8 +11,8 @@ if [[ -z "${SMA_FFMPEG_URL}" ]]; then
   export SMA_FFMPEG_URL="https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz"
 fi
 
-apt-get -qq -y update
-apt-get install -qq -y \
+apt-get -y -q update
+apt-get install -y -q \
   wget \
   python3 \
   python3-pip \
