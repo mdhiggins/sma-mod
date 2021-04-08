@@ -23,7 +23,8 @@ RUN \
   python3 -m pip install --user virtualenv && \
   python3 -m virtualenv ${SMA_PATH}/venv && \
   ${SMA_PATH}/venv/bin/pip install -r ${SMA_PATH}/setup/requirements.txt && \
-  mv ${SMA_PATH} /root-layer${SMA_PATH} && \
+  mkdir -p /root-layer${SMA_PATH}/../ && \
+  mv ${SMA_PATH} /root-layer${SMA_PATH}../ && \
 # ffmpeg
   wget ${SMA_FFMPEG_URL} -O /tmp/ffmpeg.tar.xz && \
   mkdir -p /root-layer/usr/local/bin && \
