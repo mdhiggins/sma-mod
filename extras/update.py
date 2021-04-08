@@ -11,6 +11,11 @@ autoProcess = os.path.join(os.environ.get("SMA_PATH", "/usr/local/sma"), "config
 
 
 def main():
+    section = os.environ.get("SMA_RS")
+    if not section:
+        logging.error("No Sonarr/Radarr specifying ENV variable")
+        sys.exit(0)
+
     if not os.path.isfile(xml):
         logging.error("No Sonarr/Radarr config file found")
         sys.exit(1)
@@ -31,10 +36,6 @@ def main():
     ssl = root.find("EnableSsl").text
     ssl = ssl.lower() in ["true", "yes", "t", "1", "y"] if ssl else False
     apikey = root.find("ApiKey").text
-    section = os.environ.get("SMA_RS")
-    if not section:
-        logging.error("No Sonarr/Radarr specifying ENV variable")
-        sys.exit(1)
 
     safeConfigParser = configparser.ConfigParser()
     safeConfigParser.read(autoProcess)
