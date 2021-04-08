@@ -5,16 +5,20 @@ if [[ -z "${SMA_PATH}" ]]; then
   export SMA_PATH="/usr/local/sma"
 fi
 
-apt-get -qq update
+if [[ -z "${SMA_PATH}" ]]; then
+  export SMA_FFMPEG_URL="https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz"
+fi
+
+apt-get -qq update >/dev/null
 apt-get install -yqq \
   wget \
   python3 \
   python3-pip \
-  git
-python3 -m pip install --user --upgrade pip
-python3 -m pip install --user virtualenv
-python3 -m virtualenv ${SMA_PATH}/venv
-${SMA_PATH}/venv/bin/pip install -yqq -r ${SMA_PATH}/setup/requirements.txt
+  git >/dev/null
+python3 -m pip install --user --upgrade pip >/dev/null
+python3 -m pip install --user virtualenv >/dev/null
+python3 -m virtualenv ${SMA_PATH}/venv >/dev/null
+${SMA_PATH}/venv/bin/pip install -yqq -r ${SMA_PATH}/setup/requirements.txt >/dev/null
 
 # update from git
 if [[ "${SMA_UPDATE}" == "true" ]]
