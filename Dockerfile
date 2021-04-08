@@ -11,7 +11,7 @@ RUN \
   apt-get update && \
   apt-get install -y \
     git \
-    wget \
+    wget && \
 # make directory
   mkdir -p /root-layer${SMA_PATH} && \
 # download repo
