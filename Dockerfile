@@ -12,19 +12,10 @@ RUN \
   apt-get install -y \
     git \
     wget \
-    python3 \
-    python3-pip && \
 # make directory
-  mkdir -p ${SMA_PATH} && \
+  mkdir -p /root-layer${SMA_PATH} && \
 # download repo
-  git clone https://github.com/mdhiggins/sickbeard_mp4_automator.git ${SMA_PATH} && \
-# install pip, venv, and set up a virtual self contained python environment
-  python3 -m pip install --user --upgrade pip && \
-  python3 -m pip install --user virtualenv && \
-  python3 -m virtualenv ${SMA_PATH}/venv && \
-  ${SMA_PATH}/venv/bin/pip install -r ${SMA_PATH}/setup/requirements.txt && \
-  mkdir -p /root-layer${SMA_PATH}/../ && \
-  mv ${SMA_PATH} /root-layer${SMA_PATH}/../ && \
+  git clone https://github.com/mdhiggins/sickbeard_mp4_automator.git /root-layer${SMA_PATH} && \
 # ffmpeg
   wget ${SMA_FFMPEG_URL} -O /tmp/ffmpeg.tar.xz && \
   mkdir -p /root-layer/usr/local/bin && \
@@ -46,9 +37,6 @@ COPY extras/ /root-layer${SMA_PATH}/
 COPY root/ /root-layer/
 
 FROM scratch
-
-ENV SMA_PATH /usr/local/sma
-ENV SMA_UPDATE false
 
 VOLUME /usr/local/sma/config
 
