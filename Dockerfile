@@ -41,7 +41,7 @@ RUN \
 
 # update.py sets FFMPEG/FFPROBE paths, updates API key and Sonarr/Radarr settings in autoProcess.ini
 COPY extras/ ${SMA_PATH}/
-COPY ${SMA_PATH}/ /root-layer/
+COPY .${SMA_PATH}/ /root-layer/
 COPY root/ /root-layer/
 
 FROM scratch
