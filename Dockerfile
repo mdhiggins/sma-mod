@@ -15,7 +15,7 @@ RUN \
     python3 \
     python3-pip && \
 # make directory
-  mkdir /root-layer${SMA_PATH} && \
+  mkdir -p /root-layer${SMA_PATH} && \
 # download repo
   git clone https://github.com/mdhiggins/sickbeard_mp4_automator.git /root-layer${SMA_PATH} && \
 # install pip, venv, and set up a virtual self contained python environment
