@@ -1,5 +1,10 @@
 #!/usr/bin/with-contenv bash
 
+# env check
+if [[ -z "${SMA_PATH}" ]]; then
+  export SMA_PATH="/usr/local/sma"
+fi
+
 # ffmpeg
 if [[ -f "/usr/local/bin/ffmpeg" ]]
 then
@@ -17,6 +22,8 @@ fi
 # update from git
 if [[ "${SMA_UPDATE}" == "true" ]]
 then
+    apt-get update
+    apt-get install -y git
     git -C ${SMA_PATH} pull origin master --quiet
 fi
 
