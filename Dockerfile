@@ -23,6 +23,7 @@ RUN \
   python3 -m pip install --user virtualenv && \
   python3 -m virtualenv ${SMA_PATH}/venv && \
   ${SMA_PATH}/venv/bin/pip install -r ${SMA_PATH}/setup/requirements.txt && \
+  mv ${SMA_PATH} /root-layer/ && \
 # ffmpeg
   wget ${SMA_FFMPEG_URL} -O /tmp/ffmpeg.tar.xz && \
   mkdir -p /root-layer/usr/local/bin && \
@@ -40,8 +41,7 @@ RUN \
     /var/tmp/*
 
 # update.py sets FFMPEG/FFPROBE paths, updates API key and Sonarr/Radarr settings in autoProcess.ini
-COPY extras/ ${SMA_PATH}/
-COPY .${SMA_PATH}/ /root-layer/
+COPY extras/ /root-layer${SMA_PATH}/
 COPY root/ /root-layer/
 
 FROM scratch
