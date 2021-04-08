@@ -15,14 +15,14 @@ RUN \
     python3 \
     python3-pip && \
 # make directory
-  mkdir -p /root-layer${SMA_PATH} && \
+  mkdir -p ${SMA_PATH} && \
 # download repo
-  git clone https://github.com/mdhiggins/sickbeard_mp4_automator.git /root-layer${SMA_PATH} && \
+  git clone https://github.com/mdhiggins/sickbeard_mp4_automator.git ${SMA_PATH} && \
 # install pip, venv, and set up a virtual self contained python environment
   python3 -m pip install --user --upgrade pip && \
   python3 -m pip install --user virtualenv && \
-  python3 -m virtualenv /root-layer${SMA_PATH}/venv && \
-  /root-layer${SMA_PATH}/venv/bin/pip install -r /root-layer${SMA_PATH}/setup/requirements.txt && \
+  python3 -m virtualenv ${SMA_PATH}/venv && \
+  ${SMA_PATH}/venv/bin/pip install -r ${SMA_PATH}/setup/requirements.txt && \
 # ffmpeg
   wget ${SMA_FFMPEG_URL} -O /tmp/ffmpeg.tar.xz && \
   mkdir -p /root-layer/usr/local/bin && \
@@ -40,7 +40,8 @@ RUN \
     /var/tmp/*
 
 # update.py sets FFMPEG/FFPROBE paths, updates API key and Sonarr/Radarr settings in autoProcess.ini
-COPY extras/ /root-layer${SMA_PATH}/
+COPY extras/ ${SMA_PATH}/
+COPY ${SMA_PATH}/ /root-layer/
 COPY root/ /root-layer/
 
 FROM scratch
