@@ -7,13 +7,20 @@ fi
 
 apt-get -qq update
 apt-get install -yqq \
-  wget
-  python3
-  python3-pip
+  wget \
+  python3 \
+  python3-pip \
+  git
 python3 -m pip install --user --upgrade pip
 python3 -m pip install --user virtualenv
 python3 -m virtualenv ${SMA_PATH}/venv
 ${SMA_PATH}/venv/bin/pip install -yqq -r ${SMA_PATH}/setup/requirements.txt
+
+# update from git
+if [[ "${SMA_UPDATE}" == "true" ]]
+then
+    git -C ${SMA_PATH} pull origin master --quiet
+fi
 
 # ffmpeg
 if [[ -f "/usr/local/bin/ffmpeg" ]]
@@ -27,14 +34,6 @@ else
     chmod g+x /usr/local/bin/ffmpeg
     chmod g+x /usr/local/bin/ffprobe
     rm -rf /tmp/*
-fi
-
-# update from git
-if [[ "${SMA_UPDATE}" == "true" ]]
-then
-    apt-get -qq update
-    apt-get install -yqq git
-    git -C ${SMA_PATH} pull origin master --quiet
 fi
 
 # permissions
