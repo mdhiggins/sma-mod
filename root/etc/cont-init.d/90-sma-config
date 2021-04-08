@@ -22,8 +22,8 @@ fi
 # update from git
 if [[ "${SMA_UPDATE}" == "true" ]]
 then
-    apt-get update
-    apt-get install -y git
+    apt-get -q update
+    apt-get install -qy git
     git -C ${SMA_PATH} pull origin master --quiet
 fi
 
