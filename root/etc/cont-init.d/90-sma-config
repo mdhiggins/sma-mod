@@ -8,7 +8,21 @@ if [[ -z "${SMA_PATH}" ]]; then
 fi
 
 if [[ -z "${SMA_FFMPEG_URL}" ]]; then
+  architecture=$(dpkg --print-architecture)
+  case "$architecture" in
+  'amd64')
   export SMA_FFMPEG_URL="https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz"
+  ;;
+  'armhf')
+  export SMA_FFMPEG_URL="https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-armhf-static.tar.xz"
+  ;;
+  'arm64')
+  export SMA_FFMPEG_URL="https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-arm64-static.tar.xz"
+  ;;
+  *)
+  export SMA_FFMPEG_URL="https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-$architecture-static.tar.xz"
+  ;;
+  esac
 fi
 
 apt-get -y -qq update >/dev/null
