@@ -11,12 +11,12 @@ if [[ -z "${SMA_FFMPEG_URL}" ]]; then
   export SMA_FFMPEG_URL="https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz"
 fi
 
-apt-get -y -qq update
+apt-get -y -qq update >/dev/null
 apt-get install -y -qq \
   wget \
   python3 \
   python3-pip \
-  git
+  git >/dev/null
 python3 -m pip install -q --user --upgrade pip
 python3 -m pip install -q --user virtualenv
 python3 -m virtualenv -q ${SMA_PATH}/venv
