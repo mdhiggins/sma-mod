@@ -5,6 +5,8 @@ export DEBIAN_FRONTEND="noninteractive"
 # env check
 if [[ -z "${SMA_PATH}" ]]; then
     export SMA_PATH="/usr/local/sma"
+    grep -q SMA_PATH /etc/environment || echo 'SMA_PATH="/usr/local/sma"' >> /etc/environment
+    grep -q SMA_PATH /etc/bash.bashrc || echo 'SMA_PATH="/usr/local/sma"' >> /etc/bash.bashrc
 fi
 
 # check virtual python environment
