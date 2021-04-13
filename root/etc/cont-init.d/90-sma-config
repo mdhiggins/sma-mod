@@ -5,7 +5,7 @@ export DEBIAN_FRONTEND="noninteractive"
 # env check
 if [[ -z "${SMA_PATH}" ]]; then
     export SMA_PATH="/usr/local/sma"
-    echo $SMA_PATH > /var/run/s6/container_environment/SMA_PATH
+    echo -n $SMA_PATH > /var/run/s6/container_environment/SMA_PATH
 fi
 
 # check virtual python environment
