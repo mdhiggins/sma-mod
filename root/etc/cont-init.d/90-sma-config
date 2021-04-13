@@ -4,8 +4,13 @@ export DEBIAN_FRONTEND="noninteractive"
 
 # env check
 if [[ -z "${SMA_PATH}" ]]; then
+    echo "[cont.init-d] 90-sma-config: trying to set SMA_PATH"
     export SMA_PATH="/usr/local/sma"
-    echo -n $SMA_PATH > /var/run/s6/container_environment/SMA_PATH
+    /usr/bin/env SMA_PATH=$SMA_PATH >/dev/null
+    grep -q SMA_PATH /etc/environment || echo 'SMA_PATH="/usr/local/sma"' >> /etc/environment
+    grep -q SMA_PATH /etc/bash.bashrc || echo 'export SMA_PATH=/usr/local/sma' >> /etc/bash.bashrc
+    grep -q SMA_PATH /etc/profile || echo 'export SMA_PATH=/usr/local/sma' >> /etc/profile
+
 fi
 
 # check virtual python environment
