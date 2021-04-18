@@ -1,5 +1,5 @@
 ## Buildstage ##
-FROM ghcr.io/linuxserver/baseimage-ubuntu:focal as buildstage
+FROM ghcr.io/linuxserver/baseimage-alpine:latest as buildstage
 LABEL maintainer="mdhiggins <mdhiggins23@gmail.com>"
 
 ENV SMA_PATH /usr/local/sma
@@ -7,8 +7,8 @@ ENV SMA_FFMPEG_URL https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd6
 
 # get python3 and git, and install python libraries
 RUN \
-  apt-get update && \
-  apt-get install -y \
+  apk update && \
+  apk add --no-cache \
     git && \
 # make directory
   mkdir -p /root-layer${SMA_PATH} && \
