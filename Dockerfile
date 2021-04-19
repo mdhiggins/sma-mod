@@ -10,6 +10,7 @@ RUN \
   apk update && \
   apk add --no-cache \
     git && \
+  apk add dpkg && \
 # make directory
   mkdir -p /root-layer${SMA_PATH} && \
 # download repo
