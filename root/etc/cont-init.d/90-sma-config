@@ -23,6 +23,8 @@ else
     python3 -m pip install -q --user virtualenv --no-warn-script-location
     python3 -m virtualenv -q ${SMA_PATH}/venv
     ${SMA_PATH}/venv/bin/pip install -q -r ${SMA_PATH}/setup/requirements.txt
+    ${SMA_PATH}/venv/bin/pip install -q -r ${SMA_PATH}/setup/requirements-deluge.txt
+    ${SMA_PATH}/venv/bin/pip install -q -r ${SMA_PATH}/setup/requirements-qbittorrent.txt
 fi
 
 # update from git
