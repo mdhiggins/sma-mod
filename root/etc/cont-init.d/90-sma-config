@@ -14,8 +14,8 @@ apt-get install -y -qq \
     python3-pip \
     python3-pymediainfo \
     git >/dev/null
-python3 -m pip install -q --user --upgrade pip
-python3 -m pip install -q --user virtualenv --no-warn-script-location
+python3 -m pip install -q --user --upgrade pip >/dev/null
+python3 -m pip install -q --user virtualenv --no-warn-script-location >/dev/null
 
 # check virtual python environment
 if [[ -f "${SMA_PATH}/venv/bin/python3" ]]
