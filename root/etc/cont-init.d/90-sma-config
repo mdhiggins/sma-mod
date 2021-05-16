@@ -14,7 +14,7 @@ if [ -f /usr/bin/apt ]; then
         python3 \
         python3-pip \
         python3-pymediainfo \
-        git \ > /dev/null
+        git > /dev/null
 elif [ -f /sbin/apk ]; then
     # Alpine
     apk update > /dev/null
@@ -22,7 +22,7 @@ elif [ -f /sbin/apk ]; then
         wget \
         python3 \
         py3-pip \
-        git \ > /dev/null
+        git > /dev/null
     apk add --no-cache py3-pymediainfo --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community > /dev/null
 fi
 
