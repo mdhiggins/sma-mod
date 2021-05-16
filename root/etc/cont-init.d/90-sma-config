@@ -26,15 +26,12 @@ elif [ -f /sbin/apk ]; then
     apk add --no-cache py3-pymediainfo --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community > /dev/null
 fi
 
-python3 -m pip install -q --user --upgrade pip --no-warn-script-location > /dev/null
-python3 -m pip install -q --user virtualenv --no-warn-script-location > /dev/null
-
 # check virtual python environment
 if [[ -f "${SMA_PATH}/venv/bin/python3" ]]
 then
     :
 else
-    python3 -m virtualenv -q ${SMA_PATH}/venv
+    python3 -m venv -q ${SMA_PATH}/venv
     ${SMA_PATH}/venv/bin/pip install -q -r ${SMA_PATH}/setup/requirements.txt
     ${SMA_PATH}/venv/bin/pip install -q -r ${SMA_PATH}/setup/requirements-deluge.txt
     ${SMA_PATH}/venv/bin/pip install -q -r ${SMA_PATH}/setup/requirements-qbittorrent.txt
