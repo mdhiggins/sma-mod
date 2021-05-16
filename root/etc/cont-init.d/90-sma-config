@@ -31,16 +31,18 @@ elif [ -f /sbin/apk ]; then
 fi
 
 # check virtual python environment
-if [[ -f "${SMA_PATH}/venv/bin/python3" ]]
-then
+if [[ -f "${SMA_PATH}/venv/bin/python3" ]]; then
     :
 else
     python3 -m venv ${SMA_PATH}/venv
     ${SMA_PATH}/venv/bin/python3 -m pip install -q --upgrade pip > /dev/null
     ${SMA_PATH}/venv/bin/pip install -q \
-        -r ${SMA_PATH}/setup/requirements.txt \
+        -r ${SMA_PATH}/setup/requirements.txt > /dev/null
+    if [[ -z "${SMA_RS}" ]]; then
+    ${SMA_PATH}/venv/bin/pip install -q \
         -r ${SMA_PATH}/setup/requirements-deluge.txt \
         -r ${SMA_PATH}/setup/requirements-qbittorrent.txt > /dev/null
+    fi
 fi
 
 # update from git
