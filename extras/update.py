@@ -12,6 +12,7 @@ autoProcess = os.path.join(os.environ.get("SMA_PATH", "/usr/local/sma"), "config
 
 
 def main():
+    # Ensure a valid config file
     ReadSettings()
 
     if not os.path.isfile(autoProcess):

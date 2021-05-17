@@ -30,11 +30,13 @@ fi
 if [[ -f "${SMA_PATH}/venv/bin/python3" ]]; then
     :
 else
+    echo "[90-sma-config] Creating python virtual environment and installing requirements"
     python3 -m venv ${SMA_PATH}/venv
     ${SMA_PATH}/venv/bin/python3 -m pip install -q --upgrade pip > /dev/null
     ${SMA_PATH}/venv/bin/pip install -q \
         -r ${SMA_PATH}/setup/requirements.txt > /dev/null
     if [[ -z "${SMA_RS}" && -f /usr/bin/apt ]]; then
+    echo "[90-sma-config] Installing additional deluge/qbittorrent requirements"
     ${SMA_PATH}/venv/bin/pip install -q \
         -r ${SMA_PATH}/setup/requirements-deluge.txt \
         -r ${SMA_PATH}/setup/requirements-qbittorrent.txt > /dev/null
@@ -44,6 +46,7 @@ fi
 # update from git
 if [[ "${SMA_UPDATE}" == "true" ]]
 then
+    echo "[90-sma-config] Pulling SMA from github master"
     git -C ${SMA_PATH} pull origin master --quiet
 fi
 
@@ -73,6 +76,7 @@ else
         ;;
     esac
     fi
+    echo "[90-sma-config] Downloading and installing FFMpeg"
     wget -q ${SMA_FFMPEG_URL} -O /tmp/ffmpeg.tar.xz
     tar -xJf /tmp/ffmpeg.tar.xz -C /usr/local/bin --strip-components 1
     chown abc:abc /usr/local/bin/ffmpeg
