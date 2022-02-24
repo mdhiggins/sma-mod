@@ -8,13 +8,13 @@ ENV SMA_FFMPEG_URL https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd6
 # get python3 and git, and install python libraries
 RUN \
   if [ -f /usr/bin/apt ]; then \
-    apt-get update && \
+    apt-get update; \
     apt-get install -y \
-      git && \
+      git; \
   elif [ -f /sbin/apk ]; then \
-    apk update && \
+    apk update; \
     apk add --no-cache \
-      git && \
+      git; \
   fi \
   # make directory
   mkdir -p /root-layer${SMA_PATH} && \
