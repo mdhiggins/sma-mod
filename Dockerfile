@@ -10,16 +10,16 @@ RUN \
   if [ -f /usr/bin/apt ]; then \
     apt-get update && \
     apt-get install -y \
-      git && \
+      git; \
   elif [ -f /sbin/apk ]; then \
     apk update && \
     apk add --no-cache \
-      git && \
+      git; \
   fi \
   # make directory
   mkdir -p /root-layer${SMA_PATH} && \
   # download repo
-  git clone https://github.com/mdhiggins/sickbeard_mp4_automator.git /root-layer${SMA_PATH};
+  git clone https://github.com/mdhiggins/sickbeard_mp4_automator.git /root-layer${SMA_PATH}
 
 # update.py sets FFMPEG/FFPROBE paths, updates API key and Sonarr/Radarr settings in autoProcess.ini
 COPY extras/ /root-layer${SMA_PATH}/
