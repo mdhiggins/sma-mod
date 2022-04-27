@@ -17,6 +17,7 @@ RUN \
   # make directory
   mkdir -p /root-layer${SMA_PATH} && \
   # download repo
+  git config --global --add safe.directory ${SMA_PATH} && \
   git clone https://github.com/mdhiggins/sickbeard_mp4_automator.git /root-layer${SMA_PATH}
 
 # update.py sets FFMPEG/FFPROBE paths, updates API key and Sonarr/Radarr settings in autoProcess.ini
