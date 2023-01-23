@@ -44,6 +44,7 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64,linux/armhf
           push: true
+          provenance: false
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/${{ env.project }}:${{ env.tag }}
             ghcr.io/${{ github.repository_owner }}/${{ env.project }}:${{ env.tag }}
