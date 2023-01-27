@@ -3,12 +3,10 @@ name: Docker Publish
 on:
   push:
     branches:
-      - 'master'
-  schedule:
-    - cron:  '0 5 * * 0'
+      - 's6v2'
 
 env:
-  tag: latest
+  tag: s6v2
   project: sma-mod
 
 jobs:
