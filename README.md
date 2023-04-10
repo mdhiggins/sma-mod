@@ -27,13 +27,16 @@ restart: unless-stopped
 
 - Mount autoProcess.ini containing directory to `/usr/local/sma/config` using volumes
  - Consider making this writable as new options will be auto written to the config as they are added
-- Radarr configuration options are read from `config.xml` inside the container and injected at runtime into `autoProcess.ini`
+- Sonarr/Radarr configuration options are read from `config.xml` inside the container and injected at runtime into `autoProcess.ini`
  - ffmpeg
  - ffprobe
  - host (read from environment variable or set to 127.0.0.1)
  - webroot
  - port
  - ssl
+
+### Scripts
+When you configure whatever container you are integrating to execute one the included python scripts, ensure that you are also pointing to the python virtual environment that contains its dependencies. Dependenies are not installed at the OS level. Many of the required wrappers are included and use the .sh extension (see the extras folder). If not that can be created manually but using the python executable `/usr/local/sma/venv/bin/python3`
 
 ### FFMPEG Binaries
 
