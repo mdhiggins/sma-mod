@@ -24,7 +24,7 @@ def main():
 
     # Set FFMPEG/FFProbe Paths
     ffmpegpath = os.environ.get("SMA_FFMPEGPATH") or "ffmpeg"
-    ffprobepath = os.environ.get("SMA_FFMPEGPATH") or "ffprobe"
+    ffprobepath = os.environ.get("SMA_FFPROBEPATH") or "ffprobe"
     safeConfigParser.set("Converter", "ffmpeg", ffmpegpath)
     safeConfigParser.set("Converter", "ffprobe", ffprobepath)
 
