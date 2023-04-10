@@ -23,8 +23,8 @@ def main():
     safeConfigParser.read(autoProcess)
 
     # Set FFMPEG/FFProbe Paths
-    ffmpegpath = os.environ.get("SMA_FFMPEGPATH") or "ffmpeg"
-    ffprobepath = os.environ.get("SMA_FFPROBEPATH") or "ffprobe"
+    ffmpegpath = os.environ.get("SMA_FFMPEG_PATH") or "ffmpeg"
+    ffprobepath = os.environ.get("SMA_FFPROBE_PATH") or "ffprobe"
     safeConfigParser.set("Converter", "ffmpeg", ffmpegpath)
     safeConfigParser.set("Converter", "ffprobe", ffprobepath)
 
