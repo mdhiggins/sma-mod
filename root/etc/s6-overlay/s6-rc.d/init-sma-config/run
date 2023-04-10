@@ -101,7 +101,7 @@ fi
 # ffmpeg
 if [[ $(which ffmpeg) ]]; then
     :
-elif [[ -z "${SMA_FFMPEG_PATH}" ]]; then
+elif [[ -z "${SMA_FFMPEG_PATH}" ]] && [[ -z "${SMA_FFPROBE_PATH}" ]]; then
     :
 else
     # check ffmpeg URL
