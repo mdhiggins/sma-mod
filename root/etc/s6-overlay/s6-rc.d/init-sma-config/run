@@ -29,7 +29,8 @@ if [ -f /usr/bin/apt ]; then
             libva2 \
             i965-va-driver \
             intel-media-va-driver-non-free \
-            mesa-va-drivers > /dev/null
+            mesa-va-drivers \
+            mesa-dri-gallium > /dev/null
     fi
     if [[ "${SMA_USE_REPO}" == "true" ]]; then
         apt-get install --no-install-recommends -y -qq \
