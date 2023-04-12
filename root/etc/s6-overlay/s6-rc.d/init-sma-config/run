@@ -28,7 +28,6 @@ if [ -f /usr/bin/apt ]; then
             libva-drm2 \
             libva2 \
             i965-va-driver \
-            intel-media-va-driver \
             intel-media-va-driver-non-free \
             mesa-va-drivers > /dev/null
     fi
