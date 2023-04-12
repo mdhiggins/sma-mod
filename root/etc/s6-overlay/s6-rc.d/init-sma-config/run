@@ -29,8 +29,7 @@ if [ -f /usr/bin/apt ]; then
             libva2 \
             i965-va-driver \
             intel-media-va-driver-non-free \
-            mesa-va-drivers \
-            mesa-dri-gallium > /dev/null
+            mesa-va-drivers > /dev/null
     fi
     if [[ "${SMA_USE_REPO}" == "true" ]]; then
         apt-get install --no-install-recommends -y -qq \
@@ -57,7 +56,8 @@ elif [ -f /sbin/apk ]; then
             ca-certificates \
             libva-intel-driver \
             intel-media-driver \
-            mesa-va-gallium > /dev/null
+            mesa-va-gallium \
+            mesa-dri-gallium > /dev/null
     fi
     if [[ "${SMA_USE_REPO}" == "true" ]]; then
         apk add --no-cache \
