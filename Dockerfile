@@ -1,5 +1,5 @@
 ## Buildstage ##
-FROM ghcr.io/linuxserver/baseimage-ubuntu:focal-ccbac383-ls117 as buildstage
+FROM ghcr.io/linuxserver/baseimage-ubuntu:focal-3b94c160-ls137 as buildstage
 LABEL maintainer="mdhiggins <mdhiggins23@gmail.com>"
 
 ENV SMA_PATH /usr/local/sma
