@@ -3,6 +3,8 @@ FROM ghcr.io/linuxserver/baseimage-ubuntu:focal as buildstage
 LABEL maintainer="mdhiggins <mdhiggins23@gmail.com>"
 
 ENV SMA_PATH /usr/local/sma
+ENV SMA_FFMPEG_PATH ffmpeg
+ENV SMA_FFPROBE_PATH ffprobe
 ENV SMA_FFMPEG_URL https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
 
 # get python3 and git, and install python libraries
